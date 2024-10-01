@@ -1,7 +1,12 @@
 PRODUCT := ./cAML
 
 $(PRODUCT):
-	gcc src/main.c -o cAML
+	gcc $(shell find src/ test/ -type f -name "*.c") -Itest/src/include -Isrc/include -o cAML
 
+.PHONY: test
 test: $(PRODUCT)
-	$(PRODUCT) -test
+	$(PRODUCT)
+
+.PHONY: clean
+clean:
+	rm -f $(PRODUCT)
