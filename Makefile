@@ -5,6 +5,8 @@ $(PRODUCT):
 
 .PHONY: test
 test: $(PRODUCT)
+	$(MAKE) -C test/cases/asl
+	$(MAKE) -C test/cases/tables
 	$(PRODUCT)
 
 .PHONY: clean
